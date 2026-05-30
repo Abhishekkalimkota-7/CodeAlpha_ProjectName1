@@ -3,20 +3,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.datasets import load_iris
 
-# Load dataset
-data = pd.read_csv("Iris.csv")
+# Load dataset from sklearn
+iris = load_iris()
+X = pd.DataFrame(iris.data, columns=iris.feature_names)
+y = iris.target # Target is already numerical (0, 1, 2)
 
-# Remove unnecessary column
-data = data.drop("Id", axis=1)
-
-# Features and target
-X = data.drop("Species", axis=1)
-y = data["Species"]
-
-# Encode target labels
-encoder = LabelEncoder()
-y = encoder.fit_transform(y)
+# No need to remove 'Id' column or use LabelEncoder as y is already numerical
 
 # Split dataset
 X_train, X_test, y_train, y_test = train_test_split(
