@@ -12,7 +12,7 @@ y = iris.target # Target is already numerical (0, 1, 2)
 
 # No need to remove 'Id' column or use LabelEncoder as y is already numerical
 
-# Split dataset
+# Split dataseta
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
